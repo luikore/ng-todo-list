@@ -1,19 +1,60 @@
+input[type='checkbox']
+  -webkit-appearance: none
+  width: 14px
+  height: 14px
+  background: white
+  border-radius: 3px
+  border: 1px solid #555
+  cursor: pointer
+
+  &:checked
+    background: #abd
+  &:focus
+    outline: none
+
 #wrap
   margin: 10px auto
   width: 800px
-  font-size: 13px
+  font-size: 16px
   font-family: Georgia, "Lucida Grande", "Lucida Sans Unicode", helvetica, verdana, arial, times, "Times New Roman", sans-serif
 
+  ul
+    padding: 0
+  li
+    list-style-type: none
+    margin: 10px 0
+    line-height: 16px
+  span.checked
+    text-decoration: line-through
+    color: gray
+
+  input[type=checkbox]
+    margin: 0 10px
+
 #add
-  width: 60px
-  height: 35px
-  text-align: center
-  background: #37E
-  border: 0
-  border-radius: 5px
-  font-size: 20px
-  font-weight: bold
-  color: white
-  &:hover
-    background: #48F
+  input
+    height: 28px
+    font-size: 18px
+    line-height: 28px
+    border-radius: 5px
+    border: 1px solid black
+    padding: 0 5px
+  button
+    width: 60px
+    height: 30px
+    text-align: center
+    background: #37E
+    border: 0
+    border-radius: 5px
+    font-size: 20px
+    font-weight: bold
+    color: white
     cursor: pointer
+    &:hover
+      background: #48F
+
+.cross
+  width: 20px
+  font-weight: bold
+  margin: 0 5px
+  text-decoration: none
