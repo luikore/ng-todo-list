@@ -1,3 +1,9 @@
+out/*.html
+out/*.js
+out/*.css
+
+.sass-cache
+
 # Logs
 logs
 *.log
