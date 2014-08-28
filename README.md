@@ -7,4 +7,4 @@ play ng, make a todo list
     gem ins sass
     gem ins slim
     npm install coffee-script
-    rake
+    rake && open out/app.html
