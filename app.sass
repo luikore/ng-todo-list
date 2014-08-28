@@ -1,3 +1,7 @@
+input, button
+  &:focus
+    outline: none
+
 input[type='checkbox']
   -webkit-appearance: none
   width: 14px
@@ -9,8 +13,6 @@ input[type='checkbox']
 
   &:checked
     background: #abd
-  &:focus
-    outline: none
 
 #wrap
   margin: 10px auto
@@ -24,9 +26,11 @@ input[type='checkbox']
     list-style-type: none
     margin: 10px 0
     line-height: 16px
-  span.checked
-    text-decoration: line-through
-    color: gray
+    span
+      cursor: pointer
+      &.checked
+        text-decoration: line-through
+        color: gray
 
   input[type=checkbox]
     margin: 0 10px

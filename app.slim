@@ -11,7 +11,7 @@ html
       ul#todo ng-repeat="item in items"
         li
           input type="checkbox" ng-model="item.checked"
-          span class="{{ item.checked ? 'checked' : '' }}"
+          span class="{{ item.checked ? 'checked' : '' }}" ng-click="item.checked = !item.checked"
             | {{ item.name }}
           a.cross href="javascript:;" ng-click="removeItem($index)"
             | ╳
