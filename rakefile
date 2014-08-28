@@ -1,6 +1,6 @@
 desc "build"
 task :default do
   sh 'coffee -p app.coffee > out/app.js'
-  sh 'sass -c app.sass > out/app.css'
+  sh 'sass app.sass > out/app.css'
   sh 'slimrb app.slim > out/app.html'
 end
