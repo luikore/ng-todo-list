@@ -1,20 +1,50 @@
-angular.module('todo', []).controller 'TodoController', ($scope)->
+angular.module('todo', [])
+
+.controller('HeaderController', ($scope, items, archivedItems)->
   $scope.title = 'a todo list with ng'
-  $scope.items = [{checked: false, name: 'The very first item'}]
+  $scope.items = items
+  $scope.archivedItems = archivedItems
+)
+
+.controller('TodoController', ($scope, items, archivedItems)->
+  $scope.items = items
 
   $scope.addItem = (newName)->
-    $scope.items.push {checked: false, name: newName}
-    $scope.newItem = ''
+    if newName
+      items.push {name: newName}
+      $scope.newItem = ''
     return
 
   $scope.removeItem = (index)->
-    $scope.items[index..index] = []
-    return
+    items[index..index] = []
 
   $scope.checkItem = (index)->
-    $scope.items[index].checked = true
+    archivedItems.push items[index]
+    items[index..index] = []
+)
 
-elem = document.querySelector '#wrap'
+.controller('DoneController', ($scope, items, archivedItems)->
+  $scope.items = archivedItems
+
+  $scope.restoreItem = (index)->
+    items.push archivedItems[index]
+    archivedItems[index..index] = []
+
+  $scope.removeItem = (index)->
+    archivedItems[index..index] = []
+)
+
+.factory 'items', ->
+  [] # of {name:}
+
+.factory 'archivedItems', ->
+  [] # of {name:}
+
+.filter 'len', ->
+  (a)->
+    if a and a.length then "(#{a.length})" else ''
+
+elem = document.querySelector 'body'
 angular.element(elem).ready ->
   angular.bootstrap elem, ['todo']
   return

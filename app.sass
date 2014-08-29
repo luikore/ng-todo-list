@@ -1,24 +1,27 @@
+// generic
 input, button
   &:focus
     outline: none
 
-input[type='checkbox']
-  -webkit-appearance: none
-  width: 14px
-  height: 14px
-  background: white
-  border-radius: 3px
-  border: 1px solid #555
-  cursor: pointer
+// nav
+nav
+  font-family: "Helvetica Neue", sans-serif
+  a
+    display: inline-block
+    margin-right: 5px
+    background: #777
+    color: white
+    border-radius: 5px
+    text-decoration: none
+    padding: 2px 8px
+    &.active
+      background: #3C5
 
-  &:checked
-    background: #abd
-
-#wrap
+body
   margin: 10px auto
-  width: 800px
+  width: 400px
   font-size: 16px
-  font-family: Georgia, "Lucida Grande", "Lucida Sans Unicode", helvetica, verdana, arial, times, "Times New Roman", sans-serif
+  font-family: Georgia, "Lucida Grande", "Lucida Sans Unicode", serif
 
   ul
     padding: 0
@@ -29,13 +32,11 @@ input[type='checkbox']
     span
       cursor: pointer
       &.checked
-        text-decoration: line-through
         color: gray
 
-  input[type=checkbox]
-    margin: 0 10px
-
-#add
+// add item
+.add
+  margin-top: 20px
   input
     height: 28px
     font-size: 18px
@@ -57,8 +58,12 @@ input[type='checkbox']
     &:hover
       background: #48F
 
-.cross
+// check/remove item
+.cross, .check, .restore
   width: 20px
+  font-size: 120%
   font-weight: bold
   margin: 0 5px
   text-decoration: none
+  text-align: right
+  float: right
