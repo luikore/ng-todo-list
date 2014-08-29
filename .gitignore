@@ -1,6 +1,5 @@
-out/*.html
-out/*.js
-out/*.css
+public/*.js
+public/*.css
 
 .sass-cache
 
