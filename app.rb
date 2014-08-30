@@ -2,15 +2,22 @@ require "sinatra"
 require "slim"
 require "coffee-script"
 require "sass"
+require "sinatra/reloader"
 
 get '/app.js' do
-  # content_type 'application/javascript'
   coffee :app
 end
 
 get '/app.css' do
-  # content_type 'text/css'
   sass :app
+end
+
+get '/todo.html' do
+  slim :todo
+end
+
+get '/done.html' do
+  slim :done
 end
 
 get '*' do

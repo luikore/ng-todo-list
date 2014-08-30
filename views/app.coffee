@@ -1,4 +1,4 @@
-angular.module('todo', [])
+angular.module('todo', ['ngRoute'])
 
 .controller('HeaderController', ($scope, items, archivedItems)->
   $scope.title = 'a todo list with ng'
@@ -34,15 +34,38 @@ angular.module('todo', [])
     archivedItems[index..index] = []
 )
 
-.factory 'items', ->
+.factory('items', ->
   [] # of {name:}
+)
 
-.factory 'archivedItems', ->
+.factory('archivedItems', ->
   [] # of {name:}
+)
 
-.filter 'len', ->
+.filter('len', ->
   (a)->
     if a and a.length then "(#{a.length})" else ''
+)
+
+.config(($routeProvider, $locationProvider)->
+  $routeProvider
+  .when('/todo',
+    templateUrl: '/todo.html'
+    controller: 'TodoController'
+  )
+  .when('/done',
+    templateUrl: '/done.html'
+    controller: 'DoneController'
+  )
+  .when('/',
+    redirectTo: '/todo'
+  )
+  $locationProvider.html5Mode(true)
+)
+
+.run(($rootScope, $location)->
+  $rootScope.location = $location
+)
 
 elem = document.querySelector 'body'
 angular.element(elem).ready ->
