@@ -77,6 +77,22 @@ add `()` in top level chain calls, so the `.` on beginning of line won't be conf
 
 ### eliminating `$scope`: controller as
 
-See
+See also
 
 http://toddmotto.com/digging-into-angulars-controller-as-syntax/
+
+First, turn a controller into a class and the function into the initializer
+
+    class TodoController
+      constructor: (injectedFoo, injectedBar)->
+        @foo = ...
+        @bar = ...
+
+Then, use controllerAs:
+
+- if in template, `TodoController as self`
+- if in router, `controllerAs: 'self'`
+
+Then, in view we use `self` to access `@foo` and `@bar`
+
+names other than `self` is also ok, but `self` just looks better

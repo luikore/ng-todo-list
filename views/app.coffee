@@ -1,39 +1,42 @@
+class HeaderController
+  constructor: (items, archivedItems)->
+    @title = 'a todo list with ng'
+    @items = items
+    @archivedItems = archivedItems
+
+class TodoController
+  constructor: (items, archivedItems, newItem)->
+    @items = items
+    @newItem = newItem
+
+    @addItem = ()->
+      if newItem.content
+        items.push {name: newItem.content}
+        newItem.content = ''
+      return
+
+    @removeItem = (index)->
+      items[index..index] = []
+
+    @checkItem = (index)->
+      archivedItems.push items[index]
+      items[index..index] = []
+
+class DoneController
+  constructor: (items, archivedItems)->
+    @items = archivedItems
+
+    @restoreItem = (index)->
+      items.push archivedItems[index]
+      archivedItems[index..index] = []
+
+    @removeItem = (index)->
+      archivedItems[index..index] = []
+
 angular.module('todo', ['ngRoute'])
-
-.controller('HeaderController', ($scope, items, archivedItems)->
-  $scope.title = 'a todo list with ng'
-  $scope.items = items
-  $scope.archivedItems = archivedItems
-)
-
-.controller('TodoController', ($scope, items, archivedItems, newItem)->
-  $scope.items = items
-  $scope.newItem = newItem
-
-  $scope.addItem = ()->
-    if newItem.content
-      items.push {name: newItem.content}
-      newItem.content = ''
-    return
-
-  $scope.removeItem = (index)->
-    items[index..index] = []
-
-  $scope.checkItem = (index)->
-    archivedItems.push items[index]
-    items[index..index] = []
-)
-
-.controller('DoneController', ($scope, items, archivedItems)->
-  $scope.items = archivedItems
-
-  $scope.restoreItem = (index)->
-    items.push archivedItems[index]
-    archivedItems[index..index] = []
-
-  $scope.removeItem = (index)->
-    archivedItems[index..index] = []
-)
+.controller('HeaderController', HeaderController)
+.controller('TodoController', TodoController)
+.controller('DoneController', DoneController)
 
 .factory('items', ->
   [] # of {name:}
@@ -57,10 +60,12 @@ angular.module('todo', ['ngRoute'])
   .when('/todo',
     templateUrl: '/todo.html'
     controller: 'TodoController'
+    controllerAs: 'self'
   )
   .when('/done',
     templateUrl: '/done.html'
     controller: 'DoneController'
+    controllerAs: 'self'
   )
   .when('/',
     redirectTo: '/todo'

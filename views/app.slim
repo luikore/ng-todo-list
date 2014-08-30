@@ -5,43 +5,42 @@ html
     meta http-equiv="X-UA-Compatible" content="IE=7"
     link type="text/css" media="all" rel="stylesheet" href="app.css"
   body
-    div#header ng-controller="HeaderController"
+    div#header ng-controller="HeaderController as self"
       h1
-        | {{ title }}
+        | {{ self.title }}
       nav
         a href="/todo" class="{{ location.path() == '/todo' ? 'active' : '' }}"
-          | TODO {{ items | len }}
+          | TODO {{ self.items | len }}
         a href="/done" class="{{ location.path() == '/done' ? 'active' : '' }}"
-          | DONE {{ archivedItems | len }}
+          | DONE {{ self.archivedItems | len }}
 
     div#view ng-view=true
 
     script type="text/ng-template" id="/done.html"
       div#done
-        ul.todo ng-repeat="item in items"
+        ul.todo ng-repeat="item in self.items"
           li
             span.checked
               | {{ item.name }}
-            a.cross href="javascript:;" ng-click="removeItem($index)"
+            a.cross href="javascript:;" ng-click="self.removeItem($index)"
               | ✘
-            a.restore href="javascript:;" ng-click="restoreItem($index)"
+            a.restore href="javascript:;" ng-click="self.restoreItem($index)"
               | ↩
 
     script type="text/ng-template" id="/todo.html"
       div#todo
-        ul.todo ng-repeat="item in items"
+        ul.todo ng-repeat="item in self.items"
           li
             span
               | {{ item.name }}
-            a.cross href="javascript:;" ng-click="removeItem($index)"
+            a.cross href="javascript:;" ng-click="self.removeItem($index)"
               | ✘
-            a.check href="javascript:;" ng-click="checkItem($index)"
+            a.check href="javascript:;" ng-click="self.checkItem($index)"
               | ✔
 
         form.add
-          input type="text" ng-model="newItem.content"
-          // ng-init="newItem = "
-          button ng-click="addItem()"
+          input type="text" ng-model="self.newItem.content"
+          button ng-click="self.addItem()"
             | +
 
     script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.19/angular.js"
