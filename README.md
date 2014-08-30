@@ -74,3 +74,9 @@ add `()` in top level chain calls, so the `.` on beginning of line won't be conf
 ### model: connect input value with properties
 
     input ng-model="newItem.content"
+
+### eliminating `$scope`: controller as
+
+See
+
+http://toddmotto.com/digging-into-angulars-controller-as-syntax/
