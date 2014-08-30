@@ -70,3 +70,7 @@ stubs the "/todo.html" call and put it into template cache
 ### on coffee
 
 add `()` in top level chain calls, so the `.` on beginning of line won't be confused
+
+### model: connect input value with properties
+
+    input ng-model="newItem.content"

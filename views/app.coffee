@@ -6,13 +6,14 @@ angular.module('todo', ['ngRoute'])
   $scope.archivedItems = archivedItems
 )
 
-.controller('TodoController', ($scope, items, archivedItems)->
+.controller('TodoController', ($scope, items, archivedItems, newItem)->
   $scope.items = items
+  $scope.newItem = newItem
 
-  $scope.addItem = (newName)->
-    if newName
-      items.push {name: newName}
-      $scope.newItem = ''
+  $scope.addItem = ()->
+    if newItem.content
+      items.push {name: newItem.content}
+      newItem.content = ''
     return
 
   $scope.removeItem = (index)->
@@ -40,6 +41,10 @@ angular.module('todo', ['ngRoute'])
 
 .factory('archivedItems', ->
   [] # of {name:}
+)
+
+.factory('newItem', ->
+  content: 'todo: make a todo list'
 )
 
 .filter('len', ->
