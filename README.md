@@ -55,17 +55,17 @@ stubs the "/todo.html" call and put it into template cache
 
 3. config routing (so we bind controller with `when()` instead of `ng-controller` attribute)
 
-    .config(($routeProvider, $locationProvider)->
-      $routeProvider
-      .when('/todo',
-        templateUrl: '/todo.html'
-        controller: 'TodoController'
-      )
-      .when('/',
-        redirectTo: '/todo'
-      )
-      $locationProvider.html5Mode(true)
-    )
+        .config(($routeProvider, $locationProvider)->
+          $routeProvider
+          .when('/todo',
+            templateUrl: '/todo.html'
+            controller: 'TodoController'
+          )
+          .when('/',
+            redirectTo: '/todo'
+          )
+          $locationProvider.html5Mode(true)
+        )
 
 ### on coffee
 
