@@ -96,3 +96,14 @@ Then, use controllerAs:
 Then, in view we use `self` to access `@foo` and `@bar`
 
 names other than `self` is also ok, but `self` just looks better
+
+### notes on debug
+
+See also
+
+https://www.ng-book.com/p/Debugging-AngularJS/
+
+    e = angular.element(document.querySelector('html'))
+    e.controller()
+    e.injector().get('SomeService')
+    e.inheritedData()
