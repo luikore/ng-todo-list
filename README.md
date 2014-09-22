@@ -107,3 +107,16 @@ https://www.ng-book.com/p/Debugging-AngularJS/
     e.controller()
     e.injector().get('SomeService')
     e.inheritedData()
+
+### more on templating
+
+    div ng-if="somethingIsTrue" TRUE
+    div ng-if="!somethingIsTrue" FALSE
+
+    div ng-switch=true on="selection"
+      div ng-switch-when="something"
+      div ng-switch-default="else"
+
+### rewrite $interpolateProvider
+
+    todo
